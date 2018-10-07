@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public float speed = 10f;
     Rigidbody2D rb;
     float movemnet = 0f;
+    int max_x = 3;
+    bool hit_boundary = false;
     // Use this for initialization
     void Start()
     {
@@ -18,7 +20,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         movemnet = Controller.getUserInput()*speed;
+
     }
 
     void FixedUpdate()
@@ -26,5 +30,7 @@ public class Player : MonoBehaviour
         Vector2 velocity = rb.velocity;
         velocity.x = movemnet;
         rb.velocity = velocity;
+
+
     }
 }
