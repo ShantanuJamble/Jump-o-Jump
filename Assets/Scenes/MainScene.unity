@@ -421,7 +421,7 @@ MonoBehaviour:
   - {fileID: 1639389129336670, guid: a944e2802261f364a97ff8cc61414233, type: 2}
   - {fileID: 1838200943540966, guid: f9c576e07786c5547b2148aa4081e713, type: 2}
   - {fileID: 1388345928652002, guid: 84c28bef0d9240c4bb4fa82336d4169d, type: 2}
-  platformcount: 200
+  player: {fileID: 1530407688}
 --- !u!4 &1747178112
 Transform:
   m_ObjectHideFlags: 0

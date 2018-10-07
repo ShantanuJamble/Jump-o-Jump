@@ -5,29 +5,51 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour {
 
     public GameObject[] platformPrefabs = new GameObject[5];
-    public int platformcount = 200;
+    //public int platformcount = 200;
+    public Rigidbody2D player;
     int platoformtypescount = 5;
     float max_x = 3f;
-    float min_y = 0.5f, max_y = 2f;
+    float min_y = 0.6f, max_y = 2f;
+    float current_y;
 	// Update is called once per frame
 	void Start () {
+        generateLevel(10); 
+	}
+    void Update()
+    {
+        if (player.position.y > current_y - 2f)
+        {
+            Debug.Log("Generating new platforms");
+            generateLevel(10);
+
+        }    
+    }
+    void generateLevel(int platformcount)
+    {
         Vector3 spawnpoint = new Vector3();
+        spawnpoint.y = current_y;
         int platformselector = 0;
-		for(int i = 0; i < platformcount; i++)
+        int lastchoice = -1;
+        for (int i = 0; i < platformcount; i++)
         {
             spawnpoint.x = Random.Range(-max_x, max_x);
             spawnpoint.y += Random.Range(min_y, max_y);
-            
-            if(spawnpoint.y<=20)
+            while (platformselector == lastchoice)
             {
-                platformselector = Random.Range(0,3);
-            }
-            else
-            {
-                platformselector = Random.Range(0, platoformtypescount);
+                if (spawnpoint.y <= 20)
+                {
+                    platformselector = Random.Range(0, 3);
+                }
+                else
+                {
+                    platformselector = Random.Range(0, platoformtypescount);
+                }
+                
             }
             Instantiate(platformPrefabs[platformselector], spawnpoint, Quaternion.identity);
+            current_y = spawnpoint.y;
+            lastchoice = platformselector;
 
         }
-	}
+    }
 }
