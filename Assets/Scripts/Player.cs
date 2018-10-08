@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour
     float movemnet = 0f;
     int max_x = 3;
     bool hit_boundary = false;
+    int score = 0;
+    public Text score_text;
     // Use this for initialization
     void Start()
     {
@@ -31,6 +34,15 @@ public class Player : MonoBehaviour
         velocity.x = movemnet;
         rb.velocity = velocity;
 
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.CompareTag("Coin"))
+        {
+            score += 1;
+            collision.collider.gameObject.SetActive(false);
+            score_text.text = score.ToString();
+        }
     }
 }
