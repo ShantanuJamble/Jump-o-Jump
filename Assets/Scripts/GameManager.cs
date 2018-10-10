@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     public GameObject player;
     public Camera camera;
+    public GameObject endscreen;
 
 	// Use this for initialization
 	void Start () {
@@ -16,14 +17,16 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         if (isEnded())
         {
-            Invoke("Restart", 0.5f);
+            PauseMenu.paused = true;
+            endscreen.SetActive(true);
+            Invoke("Restart", 1f);
         }
         
     }
 
     bool isEnded()
     {
-        if (player.transform.position.y < camera.transform.position.y - 6)
+        if (player.transform.position.y < camera.transform.position.y - 10)
         {
             Debug.Log("You're done");
             return true;
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour {
     void Restart()
     {
         //Need to add logic to give game over message. and move back to main menu not restat the game.
-         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+         SceneManager.LoadScene(0);
     }
 }
