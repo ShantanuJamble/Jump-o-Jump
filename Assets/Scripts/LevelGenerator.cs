@@ -50,7 +50,7 @@ public class LevelGenerator : MonoBehaviour {
                 
             }
             Instantiate(platformPrefabs[platformselector], spawnpoint, Quaternion.identity);
-            current_y = spawnpoint.y;
+            current_y = spawnpoint.y+0.3f;
             lastchoice = platformselector;
 
         }

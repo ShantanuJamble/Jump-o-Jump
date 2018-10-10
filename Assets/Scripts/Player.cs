@@ -45,4 +45,5 @@ public class Player : MonoBehaviour
             score_text.text = score.ToString();
         }
     }
+    
 }

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
         {
             Invoke("Restart", 0.5f);
         }
+        
     }
 
     bool isEnded()
