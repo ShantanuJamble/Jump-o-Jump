@@ -17,6 +17,7 @@ public class SpikeScript : MonoBehaviour {
     void Restart()
     {
         //Need to add logic to give game over message. and move back to main menu not restat the game.
+        PauseMenu.paused = false;
         Debug.Log("In Restart");
         SceneManager.LoadScene(0);
     }

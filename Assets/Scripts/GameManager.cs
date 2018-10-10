@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
     void Restart()
     {
         //Need to add logic to give game over message. and move back to main menu not restat the game.
-        
-         SceneManager.LoadScene(0);
+        PauseMenu.paused = false;
+        SceneManager.LoadScene(0);
     }
 }
